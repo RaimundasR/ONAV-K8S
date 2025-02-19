@@ -36,4 +36,18 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   ```sh
   git clone https://github.com/stefanprodan/podinfo.git
   ```
+- Pakeiskite resurus reikalingus sudiegti ir pasiekti podinfo applikacijs naudojant subdomeną**: `stud<nr>.devplay.art`
+`podinfo/podinfo/charts/podinfo/values.yaml`
+
+```bash
+
+helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace tavonamespace-podinfo --create-namespace
+```
+
+patikrinkite service, pod ir ingress
+
+````
+kubectl get all -n podinfo
+
+```
 
