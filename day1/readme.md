@@ -21,12 +21,6 @@ spec:
       image: nginx:latest
       ports:
         - containerPort: 80
-      volumeMounts:
-        - name: html-volume
-          mountPath: /usr/share/nginx/html
-  volumes:
-    - name: html-volume
-      emptyDir: {}
 ```
 
 ---
@@ -61,9 +55,11 @@ metadata:
   namespace: tavo-namespace
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
 spec:
+  ingressClassName: nginx 
   rules:
-    - host: nginx.tavo-dns.local
+    - host: op.devplay.art
       http:
         paths:
           - path: /
@@ -75,18 +71,19 @@ spec:
                   number: 80
 ```
 
-📌 **Pastaba:** Pakeisk `nginx.tavo-dns.local` į realų hostname, jei reikia.
+
+📌 **Pastaba:** Pakeisk `stud<num>.devplay.art` į realų hostname, jei reikia.
 
 ---
 
 ## 3. Testavimas
 
 ### **Patikrinkite, ar Nginx veikia per DNS**
-- Pridėkite `/etc/hosts` (jei lokaliai testuojate):
+- Pridėkite `/etc/hosts` (jei lokaliai testuojate jei ne ignoruokite etc/hosts):
   ```
   127.0.0.1 nginx.tavo-dns.local
   ```
-- Atidarykite naršyklėje: `http://nginx.tavo-dns.local`
+- Atidarykite naršyklėje: `http://<jusu_dns>`
 
 ---
 
