@@ -11,5 +11,23 @@ Sukurti ir pritaikyti **Ingress** bei **Service** resursus, remiantis `podinfo` 
 
 ---
 
-## 📂 Struktūra
-Šie failai turi būti sukurti ir pritaikyti:
+## 📂 (Hints) paaiškinimas
+
+`service`
+
+port: 80 – Išorinis paslaugos prievadas.
+targetPort: 9898 – Konteinerio prievadas viduje.
+
+selector: app: podinfo – Susieja su podinfo Deployment. :point_down:
+
+````
+metadata:
+  name: podinfo-service
+  namespace: `tavo-namespace-podinfo` 
+spec:
+  selector:
+    app: podinfo
+```
+
+
+

@@ -37,5 +37,3 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   git clone https://github.com/stefanprodan/podinfo.git
   ```
 
-### 6. Užduotis atlikta ✅
-
