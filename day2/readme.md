@@ -24,7 +24,7 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
 - Suraskite repozitorijos savininką **stefanprodan**
 
 ### 4. Atsidaryti `podinfo` repozitoriją
-- `podinfo` Helm Chart puslapyje dešiniajame kampe suraskite `Source` nuorodą
+- `podinfo` Helm Chart puslapyje dešiniajam kampe suraskite `Source` nuorodą
 - Paspauskite ją – ji atsidarys `GitHub` repozitorijoje
 
 ### 5. Atsisiųsti `podinfo` repozitoriją į savo katalogą
@@ -36,18 +36,22 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   ```sh
   git clone https://github.com/stefanprodan/podinfo.git
   ```
-- Pakeiskite resurus reikalingus sudiegti ir pasiekti podinfo applikacijs naudojant subdomeną**: `stud<nr>.devplay.art`
-`podinfo/podinfo/charts/podinfo/values.yaml`
+- Pakeiskite resursus reikalingus įsidiegti ir pasiekti `podinfo` aplikaciją naudojant subdomeną **`stud<nr>.devplay.art`**
+  `podinfo/podinfo/charts/podinfo/values.yaml`
 
-```bash
+  ```sh
+  helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace tavonamespace-podinfo --create-namespace
+  ```
 
-helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace tavonamespace-podinfo --create-namespace
+### 6. Patikrinkite Service, Pod ir Ingress
+```sh
+kubectl get all -n podinfo
 ```
 
-patikrinkite service, pod ir ingress
+### 7. Įdiekite FluxCD Source ir Helm operatorių
+ Jei reikia pašalinti nereikalingus komponentus, naudokite `--components=`:
 
-````
-kubectl get all -n podinfo
-
+```sh
+flux uninstall --components="helm-controller,source-controller"
 ```
 
