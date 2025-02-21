@@ -43,8 +43,8 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace stud<nr>-podinfo --create-namespace
   ```
 
-  Jei reikia nuorodyti kur config failas:
-  
+  ###  Jeigu reikia nuorodti `config`failą :
+
   ```bash
   helm install <release-name> <chart-name> --kubeconfig <path-to-kubeconfig>
    ```
