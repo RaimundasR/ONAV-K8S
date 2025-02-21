@@ -43,55 +43,40 @@ Sukurkite failą `podinfo-helmrelease.yaml` su šiuo turiniu savo sukurtame kata
 >**Svarbu!** Pakeiskite `<Nr>` į savo studento numerį. Pvz. `stud1.devplay.art`
 
 ```yaml
----
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: podinfo
-  namespace: default
+  namespace: stud9-podinfo
 spec:
-  interval: 5m
+  interval: 10m0s
   url: https://stefanprodan.github.io/podinfo
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: podinfo
-  namespace: default
+  namespace: stud9-podinfo
 spec:
-  interval: 10m
-  timeout: 5m
   chart:
     spec:
       chart: podinfo
-      version: '6.5.0'
       sourceRef:
         kind: HelmRepository
         name: podinfo
-      interval: 5m
-  releaseName: podinfo
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    remediation:
-      retries: 3
-  test:
-    enable: true
-  driftDetection:
-    mode: enabled
-    ignore:
-    - paths: ["/spec/replicas"]
-      target:
-        kind: Deployment
+      version: '6.0.0'
+  interval: 10m0s
   values:
     replicaCount: 2
     ingress:
       enabled: true
+      className: "nginx"
       hosts:
-        - host: "stud<Nr>.devplay.art"
+        - host: stud9.devplay.art
           paths:
-            - "/"
+            - path: /
+              pathType: Prefix
+
 ```
 
 ---
