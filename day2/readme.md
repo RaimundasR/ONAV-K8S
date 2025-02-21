@@ -43,6 +43,19 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace stud<nr>-podinfo --create-namespace
   ```
 
+  Jei reikia nuorodyti kur config failas:
+  
+  ```bash
+  helm install <release-name> <chart-name> --kubeconfig <path-to-kubeconfig>
+   ```
+
+  ```bash
+  helm install my-release my-chart \
+  --kubeconfig ~/.kube/custom-config \
+  --namespace my-namespace \
+  --set key1=value1,key2=value2
+  ```
+
 ### 6. Patikrinkite Service, Pod ir Ingress
 ```sh
 kubectl get all -n podinfo
