@@ -40,7 +40,7 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   `podinfo/podinfo/charts/podinfo/values.yaml`
 
   ```sh
-  helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace tavonamespace-podinfo --create-namespace
+  helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace stud<nr>-podinfo --create-namespace
   ```
 
 ### 6. Patikrinkite Service, Pod ir Ingress
@@ -51,7 +51,13 @@ kubectl get all -n podinfo
 ### 7. Įdiekite FluxCD Source ir Helm operatorių
  Jei reikia pašalinti nereikalingus komponentus, naudokite `--components=`:
 
+ ```sh
+flux install --components="helm-controller,source-controller"
+```
+
+Pašalinti flux
+
 ```sh
-flux uninstall --components="helm-controller,source-controller"
+flux uninstall
 ```
 
