@@ -47,7 +47,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: podinfo
-  namespace: stud9-podinfo
+  namespace: stud<Nr>-podinfo
 spec:
   interval: 10m0s
   url: https://stefanprodan.github.io/podinfo
@@ -56,7 +56,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: podinfo
-  namespace: stud9-podinfo
+  namespace: stud<Nr>-podinfo
 spec:
   chart:
     spec:
@@ -72,7 +72,7 @@ spec:
       enabled: true
       className: "nginx"
       hosts:
-        - host: stud9.devplay.art
+        - host: stud<Nr>.devplay.art
           paths:
             - path: /
               pathType: Prefix
