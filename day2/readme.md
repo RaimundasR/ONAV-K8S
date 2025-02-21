@@ -40,8 +40,12 @@ git clone https://github.com/RaimundasR/ONAV-K8S.git
   `podinfo/podinfo/charts/podinfo/values.yaml`
 
   ```sh
-  helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace stud<nr>-podinfo --create-namespace
+  helm install my-podinfo podinfo/podinfo --version 6.7.1 --values=./values.yaml --namespace stud9-podinfo --create-namespace
   ```
+
+  istrinti 
+  
+  `helm uninstall my-podinfo -n stud9-podinfo`
 
   ###  Jeigu reikia nuorodti `config`failą :
 
